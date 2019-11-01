@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Accounting 1.00</title>
+		<title>ACCOUNTING 1.00</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/accounting.css'); ?>">
 		<style type="text/css">
 			body, select, input {
@@ -24,9 +24,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<script type="text/javascript" src="<?php echo base_url('js/jquery-3.4.1.min.js') ?>"></script>
 	</head>
 	<body>
-		<h2>Accounting 1.00</h2>
+		<h2>ACCOUNTING 1.00</h2>
 		<ul>
-			<li><a href="<?php echo site_url('home'); ?>"></a>HOME</li>
+			<li><a href="<?php echo site_url('home'); ?>">HOME</a></li>
 			<li class="submenu"><a href="#">SETUP</a>
 				<ul class="ul_submenu">
 					<li><a href="<?php echo site_url('grup'); ?>">GRUP</a></li>
