@@ -6,7 +6,7 @@ class Subgrup extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('subgrupm');
-		$this->load->model('grup');
+		$this->load->model('grupm');
 	}
 
 	public function index() {
@@ -17,30 +17,34 @@ class Subgrup extends CI_Controller {
 	}
 
 	public function tambah() {
+		$data['rs_grup'] = $this->grupm->ambil_data_semua();
 		$this->load->view('layout/header');
-		$this->load->view('grupt');
+		$this->load->view('subgrupt', $data);
 		$this->load->view('layout/footer');
 	}
 
 	public function simpan() {
 		$data = array(
-			'name' => $this->input->post('name')
+			'grup_id' => $this->input->post('grup_id'),
+			'kode' => $this->input->post('kode'),
+			'nama' => $this->input->post('nama')
 		);
-		$this->grupm->simpan($data);
-		redirect(site_url('grup'));
+		$this->subgrupm->simpan($data);
+		redirect(site_url('subgrup'));
 	}
 
 	public function edit($id, $hapus = null) {
-		$data['r'] = $this->grupm->ambil_data_by_id($id)->row();
+		$data['rs_grup'] = $this->grupm->ambil_data_semua();
+		$data['r'] = $this->subgrupm->ambil_data_by_id($id)->row();
 		$this->load->view('layout/header');
 
 		if ($hapus == 1) {
 			// load form konfirmasi hapus data
-			$this->load->view('gruph', $data);
+			$this->load->view('subgruph', $data);
 		}
 		else {
 			// load form edit data
-			$this->load->view('grupe', $data);
+			$this->load->view('subgrupe', $data);
 		}
 		
 		$this->load->view('layout/footer');
@@ -48,10 +52,12 @@ class Subgrup extends CI_Controller {
 
 	public function update($id) {
 		$data = array(
-			'name' => $this->input->post('name')
+			'grup_id' => $this->input->post('grup_id'),
+			'kode' => $this->input->post('kode'),
+			'nama' => $this->input->post('nama')
 		);
-		$this->grupm->update($data, $id);
-		redirect(site_url('grup'));
+		$this->subgrupm->update($data, $id);
+		redirect(site_url('subgrup'));
 	}
 
 	public function hapus($id) {
@@ -59,7 +65,7 @@ class Subgrup extends CI_Controller {
 	}
 
 	public function hapus_data($id) {
-		$this->grupm->hapus($id);
-		redirect(site_url('grup'));
+		$this->subgrupm->hapus($id);
+		redirect(site_url('subgrup'));
 	}
 }
