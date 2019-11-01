@@ -7,8 +7,8 @@
 	</tr>
 	<?php foreach($rs as $r): ?>
 	<tr>
-		<td><?php echo $r['name']; ?></td>
-		<td><a href="<?php echo site_url('grup/edit/'.$r['id']); ?>">Edit</a> | <a href="<?php echo site_url('grup/hapus/'.$r['id']); ?>">Hapus</a></td>
+		<td><?php echo $r->name; ?></td>
+		<td><a href="<?php echo site_url('grup/edit/'.$r->id); ?>">Edit</a> | <a href="<?php echo site_url('grup/hapus/'.$r->id); ?>">Hapus</a></td>
 	</tr>
 	<?php endforeach; ?>
 </table>

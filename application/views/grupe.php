@@ -1,8 +1,8 @@
 <h3>GRUP - EDIT DATA</h3>
-<form action="<?php echo site_url('grup/update/'.$r['id']); ?>" method="post">
+<form action="<?php echo site_url('grup/update/'.$r->id); ?>" method="post">
 	<table>
 		<tr>
-			<td>Nama</td><td>:</td><td><input type="text" name="name" value="<?php echo $r['name']; ?>"></td>
+			<td>Nama</td><td>:</td><td><input type="text" name="name" value="<?php echo $r->name; ?>"></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>

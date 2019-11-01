@@ -1,8 +1,8 @@
 <h3>GRUP - HAPUS DATA</h3>
-<form action="<?php echo site_url('grup/hapus_data/'.$r['id']); ?>" method="post">
+<form action="<?php echo site_url('grup/hapus_data/'.$r->id); ?>" method="post">
 	<table>
 		<tr>
-			<td>Nama</td><td>:</td><td><?php echo $r['name']; ?></td>
+			<td>Nama</td><td>:</td><td><?php echo $r->name; ?></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>

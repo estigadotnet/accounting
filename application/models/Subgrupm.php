@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Grupm extends CI_Model {
+class Subgrupm extends CI_Model {
 
-	private $_table = 't01_grup';
+	private $_table = 't02_subgrup';
 
 	public function ambil_data_semua() {
 		return $this->db->get($this->_table)->result();

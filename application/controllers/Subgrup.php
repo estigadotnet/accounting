@@ -1,17 +1,18 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Grup extends CI_Controller {
+class Subgrup extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('grupm');
+		$this->load->model('subgrupm');
+		$this->load->model('grup');
 	}
 
 	public function index() {
-		$data['rs'] = $this->grupm->ambil_data_semua();
+		$data['rs'] = $this->subgrupm->ambil_data_semua();
 		$this->load->view('layout/header');
-		$this->load->view('grupl', $data);
+		$this->load->view('subgrupl', $data);
 		$this->load->view('layout/footer');
 	}
 
