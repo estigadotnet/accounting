@@ -1,27 +1,27 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Akun extends CI_Controller {
+class t004_akun extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('akunm');
-		$this->load->model('subgrupm');
-		$this->load->model('matauangm');
+		$this->load->model('t004_akunm');
+		$this->load->model('t002_subgrupm');
+		$this->load->model('t003_matauangm');
 	}
 
 	public function index() {
-		$data['rs'] = $this->akunm->ambil_data_semua();
+		$data['rs'] = $this->t004_akunm->ambil_data_semua();
 		$this->load->view('layout/header');
-		$this->load->view('akunl', $data);
+		$this->load->view('t004_akunl', $data);
 		$this->load->view('layout/footer');
 	}
 
 	public function tambah() {
-		$data['rs_subgrup'] = $this->subgrupm->ambil_data_semua();
-		$data['rs_matauang'] = $this->matauangm->ambil_data_semua();
+		$data['rs_subgrup'] = $this->t002_subgrupm->ambil_data_semua();
+		$data['rs_matauang'] = $this->t003_matauangm->ambil_data_semua();
 		$this->load->view('layout/header');
-		$this->load->view('akunt', $data);
+		$this->load->view('t004_akunt', $data);
 		$this->load->view('layout/footer');
 	}
 
@@ -32,23 +32,23 @@ class Akun extends CI_Controller {
 			'subgrup_id' => $this->input->post('subgrup_id'),
 			'matauang_id' => $this->input->post('matauang_id')
 		);
-		$this->akunm->simpan($data);
-		redirect(site_url('akun'));
+		$this->t004_akunm->simpan($data);
+		redirect(site_url('t004_akun'));
 	}
 
 	public function edit($id, $hapus = null) {
-		$data['rs_subgrup'] = $this->subgrupm->ambil_data_semua();
-		$data['rs_matauang'] = $this->matauangm->ambil_data_semua();
-		$data['r'] = $this->akunm->ambil_data_by_id($id)->row();
+		$data['rs_subgrup'] = $this->t002_subgrupm->ambil_data_semua();
+		$data['rs_matauang'] = $this->t003_matauangm->ambil_data_semua();
+		$data['r'] = $this->t004_akunm->ambil_data_by_id($id)->row();
 		$this->load->view('layout/header');
 
 		if ($hapus == 1) {
 			// load form konfirmasi hapus data
-			$this->load->view('akunh', $data);
+			$this->load->view('t004_akunh', $data);
 		}
 		else {
 			// load form edit data
-			$this->load->view('akune', $data);
+			$this->load->view('t004_akune', $data);
 		}
 		
 		$this->load->view('layout/footer');
@@ -61,8 +61,8 @@ class Akun extends CI_Controller {
 			'subgrup_id' => $this->input->post('subgrup_id'),
 			'matauang_id' => $this->input->post('matauang_id')
 		);
-		$this->akunm->update($data, $id);
-		redirect(site_url('akun'));
+		$this->t004_akunm->update($data, $id);
+		redirect(site_url('t004_akun'));
 	}
 
 	public function hapus($id) {
@@ -70,7 +70,7 @@ class Akun extends CI_Controller {
 	}
 
 	public function hapus_data($id) {
-		$this->akunm->hapus($id);
-		redirect(site_url('akun'));
+		$this->t004_akunm->hapus($id);
+		redirect(site_url('t004_akun'));
 	}
 }

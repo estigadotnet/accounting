@@ -1,5 +1,5 @@
 <h3>AKUN - TAMBAH DATA</h3>
-<form action="<?php echo site_url('akun/simpan'); ?>" method="post">
+<form action="<?php echo site_url('t004_akun/simpan'); ?>" method="post">
 	<table>
 		<tr>
 			<td>Sub-Grup</td><td>:</td>
@@ -29,7 +29,7 @@
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>
-			<td>&nbsp;</td><td>&nbsp;</td><td><input type="submit" value="Simpan"> <input type="button" value="Selesai" onclick="window.location.href='<?php echo site_url('akun'); ?>'"></td>
+			<td>&nbsp;</td><td>&nbsp;</td><td><input type="submit" value="Simpan"> <input type="button" value="Selesai" onclick="window.location.href='<?php echo site_url('t004_akun'); ?>'"></td>
 		</tr>
 	</table>
 </form>
