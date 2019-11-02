@@ -1,5 +1,5 @@
 <h3>SUB-GRUP - EDIT DATA</h3>
-<form action="<?php echo site_url('subgrup/update/'.$r->id); ?>" method="post">
+<form action="<?php echo site_url('t002_subgrup/update/'.$r->id); ?>" method="post">
 	<table>
 		<tr>
 			<td>Grup</td><td>:</td>
@@ -19,7 +19,7 @@
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>
-			<td>&nbsp;</td><td>&nbsp;</td><td><input type="submit" value="Update"> <input type="button" value="Selesai" onclick="window.location.href='<?php echo site_url('subgrup'); ?>'"></td>
+			<td>&nbsp;</td><td>&nbsp;</td><td><input type="submit" value="Update"> <input type="button" value="Selesai" onclick="window.location.href='<?php echo site_url('t002_subgrup'); ?>'"></td>
 		</tr>
 	</table>
 </form>

@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Subgrupm extends CI_Model {
+class t002_subgrupm extends CI_Model {
 
-	private $_table = 't02_subgrup';
+	private $_table = 't002_subgrup';
 
 	public function ambil_data_semua() {
 		$q = '
@@ -11,8 +11,8 @@ class Subgrupm extends CI_Model {
 				sg.*,
 				g.name as grup_name
 			from
-				t02_subgrup sg
-				left join t01_grup g on sg.grup_id = g.id
+				t002_subgrup sg
+				left join t001_grup g on sg.grup_id = g.id
 			order by
 				sg.grup_id, sg.kode
 		'; // echo $q;

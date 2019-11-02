@@ -26,15 +26,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<body>
 		<h2>ACCOUNTING 1.00</h2>
 		<ul>
-			<li><a href="<?php echo site_url('home'); ?>">HOME</a></li>
+			<li><a href="<?php echo site_url('c001_home'); ?>">HOME</a></li>
 			<li class="submenu"><a href="#">SETUP</a>
 				<ul class="ul_submenu">
-					<li><a href="<?php echo site_url('grup'); ?>">GRUP</a></li>
-					<li><a href="<?php echo site_url('subgrup'); ?>">SUB-GRUP</a></li>
-					<li><a href="<?php echo site_url('matauang'); ?>">MATA UANG</a></li>
-					<li><a href="<?php echo site_url('akun'); ?>">AKUN</a></li>
-					<li><a href="<?php echo site_url('periode'); ?>">PERIODE</a></li>
-					<li><a href="<?php echo site_url('saldoawal'); ?>">SALDO AWAL</a></li>
+					<li><a href="<?php echo site_url('t001_grup'); ?>">GRUP</a></li>
+					<li><a href="<?php echo site_url('t002_subgrup'); ?>">SUB-GRUP</a></li>
+					<li><a href="<?php echo site_url('t003_matauang'); ?>">MATA UANG</a></li>
+					<li><a href="<?php echo site_url('t004_akun'); ?>">AKUN</a></li>
+					<li><a href="<?php echo site_url('t005_periode'); ?>">PERIODE</a></li>
+					<li><a href="<?php echo site_url('t006_saldoawal'); ?>">SALDO AWAL</a></li>
 				</ul>
 			</li>
 		</ul>

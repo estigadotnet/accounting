@@ -1,5 +1,5 @@
 <h3>SUB-GRUP - HAPUS DATA</h3>
-<form action="<?php echo site_url('subgrup/hapus_data/'.$r->id); ?>" method="post">
+<form action="<?php echo site_url('t002_subgrup/hapus_data/'.$r->id); ?>" method="post">
 	<table>
 		<tr>
 			<td>Grup</td><td>:</td><td><?php foreach ($rs_grup as $r_grup) { if ($r_grup->id == $r->grup_id) echo $r_grup->name; } ?></td>
@@ -12,7 +12,7 @@
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>
-			<td>&nbsp;</td><td>&nbsp;</td><td><input type="submit" value="Hapus"> <input type="button" value="Selesai" onclick="window.location.href='<?php echo site_url('subgrup'); ?>'"></td>
+			<td>&nbsp;</td><td>&nbsp;</td><td><input type="submit" value="Hapus"> <input type="button" value="Selesai" onclick="window.location.href='<?php echo site_url('t002_subgrup'); ?>'"></td>
 		</tr>
 	</table>
 </form>

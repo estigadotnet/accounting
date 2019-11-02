@@ -1,5 +1,5 @@
 <h3>SUB-GRUP - LIST</h3>
-<p><a href="<?php echo site_url('subgrup/tambah'); ?>">Tambah Data</a></p>
+<p><a href="<?php echo site_url('t002_subgrup/tambah'); ?>">Tambah Data</a></p>
 <table class="paleBlueRows">
 	<tr>
 		<th>Grup</th>
@@ -40,7 +40,7 @@
 		<td>&nbsp;</td>
 		<td><?php echo $r->kode; ?></td>
 		<td><?php echo $r->nama; ?></td>
-		<td><a href="<?php echo site_url('subgrup/edit/'.$r->id); ?>">Edit</a> | <a href="<?php echo site_url('subgrup/hapus/'.$r->id); ?>">Hapus</a></td>
+		<td><a href="<?php echo site_url('t002_subgrup/edit/'.$r->id); ?>">Edit</a> | <a href="<?php echo site_url('t002_subgrup/hapus/'.$r->id); ?>">Hapus</a></td>
 	</tr>
 	<?php
 	endforeach;
