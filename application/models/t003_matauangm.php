@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Matauangm extends CI_Model {
+class t003_matauangm extends CI_Model {
 
-	private $_table = 't03_matauang';
+	private $_table = 't003_matauang';
 
 	public function ambil_data_semua() {
 		$this->db->order_by('kode asc');

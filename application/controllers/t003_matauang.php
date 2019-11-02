@@ -1,23 +1,23 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Matauang extends CI_Controller {
+class t003_matauang extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('matauangm');
+		$this->load->model('t003_matauangm');
 	}
 
 	public function index() {
-		$data['rs'] = $this->matauangm->ambil_data_semua();
+		$data['rs'] = $this->t003_matauangm->ambil_data_semua();
 		$this->load->view('layout/header');
-		$this->load->view('matauangl', $data);
+		$this->load->view('t003_matauangl', $data);
 		$this->load->view('layout/footer');
 	}
 
 	public function tambah() {
 		$this->load->view('layout/header');
-		$this->load->view('matauangt');
+		$this->load->view('t003_matauangt');
 		$this->load->view('layout/footer');
 	}
 
@@ -26,21 +26,21 @@ class Matauang extends CI_Controller {
 			'kode' => $this->input->post('kode'),
 			'nama' => $this->input->post('nama')
 		);
-		$this->matauangm->simpan($data);
-		redirect(site_url('matauang'));
+		$this->t003_matauangm->simpan($data);
+		redirect(site_url('t003_matauang'));
 	}
 
 	public function edit($id, $hapus = null) {
-		$data['r'] = $this->matauangm->ambil_data_by_id($id)->row();
+		$data['r'] = $this->t003_matauangm->ambil_data_by_id($id)->row();
 		$this->load->view('layout/header');
 
 		if ($hapus == 1) {
 			// load form konfirmasi hapus data
-			$this->load->view('matauangh', $data);
+			$this->load->view('t003_matauangh', $data);
 		}
 		else {
 			// load form edit data
-			$this->load->view('matauange', $data);
+			$this->load->view('t003_matauange', $data);
 		}
 		
 		$this->load->view('layout/footer');
@@ -51,8 +51,8 @@ class Matauang extends CI_Controller {
 			'kode' => $this->input->post('kode'),
 			'nama' => $this->input->post('nama')
 		);
-		$this->matauangm->update($data, $id);
-		redirect(site_url('matauang'));
+		$this->t003_matauangm->update($data, $id);
+		redirect(site_url('t003_matauang'));
 	}
 
 	public function hapus($id) {
@@ -60,7 +60,7 @@ class Matauang extends CI_Controller {
 	}
 
 	public function hapus_data($id) {
-		$this->matauangm->hapus($id);
-		redirect(site_url('matauang'));
+		$this->t003_matauangm->hapus($id);
+		redirect(site_url('t003_matauang'));
 	}
 }
