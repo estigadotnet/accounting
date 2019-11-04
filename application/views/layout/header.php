@@ -35,6 +35,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<li><a href="<?php echo site_url('t004_akun'); ?>">AKUN</a></li>
 					<li><a href="<?php echo site_url('t005_periode'); ?>">PERIODE</a></li>
 					<li><a href="<?php echo site_url('t006_saldoawal'); ?>">SALDO AWAL</a></li>
+					<li><a href="<?php echo site_url('t007_tipejurnal'); ?>">TIPE JURNAL</a></li>
 				</ul>
 			</li>
 		</ul>

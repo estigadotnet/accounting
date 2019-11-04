@@ -1,11 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class t005_periodem extends CI_Model {
+class t007_tipejurnalm extends CI_Model {
 
-	private $_table = 't005_periode';
+	private $_table = 't007_tipejurnal';
 
 	public function ambil_data_semua() {
+		$this->db->order_by('kode asc');
 		return $this->db->get($this->_table)->result();
 	}
 
@@ -23,10 +24,5 @@ class t005_periodem extends CI_Model {
 
 	public function hapus($id) {
 		$this->db->delete($this->_table, ['id' => $id]);
-	}
-
-	// untuk form :: SALDO AWAL - TAMBAH
-	public function ambil_data_by_aktif() {
-		return $this->db->get_where($this->_table, ['isaktif' => 1]);
 	}
 }

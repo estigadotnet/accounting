@@ -18,8 +18,8 @@ class t006_saldoawal extends CI_Controller {
 	}
 
 	public function tambah() {
-		$data['rs_periode'] = $this->t005_periodem->ambil_data_semua();
-		$data['rs_akun'] = $this->t004_akunm->ambil_data_semua();
+		$data['r_periode'] = $this->t005_periodem->ambil_data_by_aktif()->row();
+		$data['rs_akun'] = $this->t004_akunm->ambil_data_by_notinsaldoawal();
 		$this->load->view('layout/header');
 		$this->load->view('t006_saldoawalt', $data);
 		$this->load->view('layout/footer');
@@ -38,18 +38,19 @@ class t006_saldoawal extends CI_Controller {
 	}
 
 	public function edit($id, $hapus = null) {
-		$data['rs_subgrup'] = $this->t002_subgrupm->ambil_data_semua();
-		$data['rs_matauang'] = $this->t003_matauangm->ambil_data_semua();
-		$data['r'] = $this->t004_akunm->ambil_data_by_id($id)->row();
+		$data['r'] = $this->t006_saldoawalm->ambil_data_by_id($id)->row();
+		$data['rs_periode'] = $this->t005_periodem->ambil_data_semua();
+		$data['rs_akun'] = $this->t004_akunm->ambil_data_by_notinsaldoawal($data['r']->akun_id);
+		// $data['r'] = $this->t006_saldoawalm->ambil_data_by_id($id)->row();
 		$this->load->view('layout/header');
 
 		if ($hapus == 1) {
 			// load form konfirmasi hapus data
-			$this->load->view('t004_akunh', $data);
+			$this->load->view('t006_saldoawalh', $data);
 		}
 		else {
 			// load form edit data
-			$this->load->view('t004_akune', $data);
+			$this->load->view('t006_saldoawale', $data);
 		}
 		
 		$this->load->view('layout/footer');
@@ -57,13 +58,14 @@ class t006_saldoawal extends CI_Controller {
 
 	public function update($id) {
 		$data = array(
-			'kode' => $this->input->post('kode'),
-			'nama' => $this->input->post('nama'),
-			'subgrup_id' => $this->input->post('subgrup_id'),
-			'matauang_id' => $this->input->post('matauang_id')
+			'periode_id' => $this->input->post('periode_id'),
+			'akun_id' => $this->input->post('akun_id'),
+			'debet' => $this->input->post('debet'),
+			'kredit' => $this->input->post('kredit'),
+			'saldo' => $this->input->post('saldo')
 		);
-		$this->t004_akunm->update($data, $id);
-		redirect(site_url('t004_akun'));
+		$this->t006_saldoawalm->update($data, $id);
+		redirect(site_url('t006_saldoawal'));
 	}
 
 	public function hapus($id) {
@@ -71,7 +73,7 @@ class t006_saldoawal extends CI_Controller {
 	}
 
 	public function hapus_data($id) {
-		$this->t004_akunm->hapus($id);
-		redirect(site_url('t004_akun'));
+		$this->t006_saldoawalm->hapus($id);
+		redirect(site_url('t006_saldoawal'));
 	}
 }
