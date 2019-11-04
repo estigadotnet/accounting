@@ -13,4 +13,8 @@
 		<td>Periode</td>
 		<td><?php echo date('d-m-Y', strtotime($r->start)) . ' s.d. ' . date('d-m-Y', strtotime($r->end)); ?></td>
 	</tr>
+	<tr>
+		<td>Session periode_id</td>
+		<td><?php echo $this->session->userdata('periode_id'); ?></td>
+	</tr>
 </table>
