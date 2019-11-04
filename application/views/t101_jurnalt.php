@@ -1,5 +1,6 @@
 <h3>JURNAL - TAMBAH DATA</h3>
-<form action="<?php echo site_url('t101_jurnal/simpan'); ?>" method="post">
+<!-- <form action="<?php echo site_url('t101_jurnal/simpan'); ?>" method="post"> -->
+	<form action="" method="post"></form>
 	<input type="hidden" name="period_id" value="<?php echo $this->session->userdata('period_id'); ?>">
 	<table>
 		<tr>
@@ -20,7 +21,7 @@
 				<table id="table-detail">
 					<tbody>
 					<tr>
-						<td><select name="akun_id[]"></select></td><td><input type="text" name="debet[]"></td><td><input type="text" name="kredit[]"></td><td><input type="button" value="Hapus Baris" id="hapusbaris"></td>
+						<td><select name="akun_id[]"></select></td><td><input type="text" name="debet[]"></td><td><input type="text" name="kredit[]"></td><td><button class="hapusBaris">Hapus Baris</button></td>
 					</tr>
 					</tbody>
 					<tfoot>
@@ -43,20 +44,19 @@
 $(function() {
 
 	$('#add-detail').on('click', addDetail);
+	$('.hapusBaris').on('click', hapusBaris);
 
 	function addDetail() {
 		var html = '' +
 		'<tr>' +
-			'<td><select name="akun_id[]"></select></td><td><input type="text" name="debet[]"></td><td><input type="text" name="kredit[]"></td><td><input type="button" value="Hapus Baris" id="hapusbaris"></td>' +
+			'<td><select name="akun_id[]"></select></td><td><input type="text" name="debet[]"></td><td><input type="text" name="kredit[]"></td><td><button class="hapusBaris">Hapus Baris</button></td>' +
 		'</tr>';
 		$('#table-detail tbody').append(html);
-		;
+		$('.hapusBaris').on('click', hapusBaris);
 	}
 
-	$('#hapusbaris').on('click', hapusBaris);
-
 	function hapusBaris() {
-		var row = $(this).parents('tr').first(); alert(row);
+		var row = $(this).parents('tr').first(); //alert(row.length);
 		if (row.length > 0) $(row[0]).remove();
 	}
 });
