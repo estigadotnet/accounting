@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				text-decoration: none;
 			}
 
-			ul.ul_submenu {
+			ul.ul_submenu, ul.ul_submenu2 {
 				display: none;
 			}
 		</style>
@@ -38,6 +38,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<li><a href="<?php echo site_url('t007_tipejurnal'); ?>">TIPE JURNAL</a></li>
 				</ul>
 			</li>
+			<li class="submenu2"><a href="#">TRANSAKSI</a>
+				<ul class="ul_submenu2">
+					<li><a href="<?php echo site_url('t101_jurnal'); ?>">JURNAL</a></li>
+				</ul>
+			</li>
 		</ul>
 
 		<script type="text/javascript">
@@ -47,6 +52,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				function(e) {
 					e.preventDefault();
 					$('ul.ul_submenu').toggle();
+				});
+			$('li.submenu2').on(
+				'click',
+				'a[href="#"]',
+				function(e) {
+					e.preventDefault();
+					$('ul.ul_submenu2').toggle();
 				});
 		</script>
 	</body>
