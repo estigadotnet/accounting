@@ -6,6 +6,7 @@ class t101_jurnal extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('t101_jurnalm');
+		$this->load->model('t007_tipejurnalm');
 	}
 
 	public function index() {
@@ -16,8 +17,9 @@ class t101_jurnal extends CI_Controller {
 	}
 
 	public function tambah() {
+		$data['rs_tipejurnal'] = $this->t007_tipejurnalm->ambil_data_semua();
 		$this->load->view('layout/header');
-		$this->load->view('t007_tipejurnalt');
+		$this->load->view('t101_jurnalt', $data);
 		$this->load->view('layout/footer');
 	}
 
