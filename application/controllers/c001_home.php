@@ -5,11 +5,14 @@ class c001_home extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->model('c001_homem');
 	}
 
 	public function index() {
+		$data['r'] = $this->c001_homem->ambil_data_semua()->row();
+		$data['num_row'] = $this->c001_homem->ambil_data_num_row();
 		$this->load->view('layout/header');
-		$this->load->view('c001_homel');
+		$this->load->view('c001_homel', $data);
 		$this->load->view('layout/footer');
 	}
 }
