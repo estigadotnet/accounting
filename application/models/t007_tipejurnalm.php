@@ -6,7 +6,7 @@ class t007_tipejurnalm extends CI_Model {
 	private $_table = 't007_tipejurnal';
 
 	public function ambil_data_semua() {
-		$this->db->order_by('kode asc');
+		// $this->db->order_by('kode asc');
 		return $this->db->get($this->_table)->result();
 	}
 
