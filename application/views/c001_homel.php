@@ -15,6 +15,6 @@
 	</tr>
 	<tr>
 		<td>Session periode_id</td>
-		<td><?php echo $this->session->userdata('periode_id'); ?></td>
+		<td><?php echo $this->session->userdata('period_id'); ?></td>
 	</tr>
 </table>

@@ -12,7 +12,7 @@ class c001_home extends CI_Controller {
 		$data['r'] = $this->c001_homem->ambil_data_semua()->row();
 		$data['num_row'] = $this->c001_homem->ambil_data_num_row();
 		if ($data['num_row'] == 1) {
-			$this->session->set_userdata('periode_id', $data['r']->id);
+			$this->session->set_userdata('period_id', $data['r']->id);
 		}
 		$this->load->view('layout/header');
 		$this->load->view('c001_homel', $data);

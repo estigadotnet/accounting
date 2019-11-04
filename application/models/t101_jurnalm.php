@@ -7,8 +7,8 @@ class t101_jurnalm extends CI_Model {
 	private $_table_d = 't102_jurnald';
 
 	public function ambil_data_semua() {
-		// $this->db->order_by('kode asc');
-		return $this->db->get($this->_table)->result();
+		$this->db->order_by('createon asc');
+		return $this->db->get_where($this->_table, ['period_id' => $this->session->userdata('period_id')])->result();
 	}
 
 	public function simpan($data) {
