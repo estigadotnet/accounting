@@ -98,4 +98,24 @@ class t004_akunm extends CI_Model {
 		'; //echo $q;
 		return $this->db->query($q)->result();
 	}
+
+	public function ambil_data_semua_jurnal($term = '') {
+		$q = '
+			select
+				ak.*,
+				ma.nama as matauang_nama,
+				sg.nama as subgrup_nama,
+				g.id as grup_id,
+				g.name as grup_name
+			from
+				t004_akun ak
+				left join t003_matauang ma on ak.matauang_id = ma.id
+				left join t002_subgrup sg on ak.subgrup_id = sg.id
+				left join t001_grup g on sg.grup_id = g.id ';
+		if (! empty($term)) { $q .= 'where lower(ak.nama) like \'%'.strtolower($term).'%\' '; }
+		$q .= 'order by
+				sg.grup_id, sg.kode, ak.kode
+		'; //echo $q; //exit;
+		return $this->db->query($q)->result();
+	}
 }

@@ -7,7 +7,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<head>
 		<meta charset="utf-8">
 		<title>ACCOUNTING 1.00</title>
+
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/accounting.css'); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/select2.min.css'); ?>">
 		<style type="text/css">
 			body, select, input {
 				font-family: calibri;
@@ -21,7 +23,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				display: none;
 			}
 		</style>
-		<script type="text/javascript" src="<?php echo base_url('js/jquery-3.4.1.min.js') ?>"></script>
+		
+		<script type="text/javascript" src="<?php echo base_url('js/jquery-3.4.1.min.js'); ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url('js/select2.min.js'); ?>"></script>
 	</head>
 	<body>
 		<h2>ACCOUNTING 1.00</h2>

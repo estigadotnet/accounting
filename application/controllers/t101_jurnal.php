@@ -7,6 +7,7 @@ class t101_jurnal extends CI_Controller {
 		parent::__construct();
 		$this->load->model('t101_jurnalm');
 		$this->load->model('t007_tipejurnalm');
+		$this->load->model('t004_akunm');
 	}
 
 	public function index() {
@@ -64,5 +65,12 @@ class t101_jurnal extends CI_Controller {
 	public function hapus_data($id) {
 		$this->t007_tipejurnalm->hapus($id);
 		redirect(site_url('t007_tipejurnal'));
+	}
+
+	public function ambil_data_akun() {
+		$nama_akun = $this->t004_akunm->ambil_data_semua_jurnal($this->input->get('q', TRUE));
+		echo json_encode((object)[
+			'nama_akun' => $nama_akun
+		]);
 	}
 }

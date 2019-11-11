@@ -21,12 +21,12 @@
 				<table id="table-detail">
 					<tbody>
 					<tr>
-						<td><select name="akun_id[]"></select></td><td><input type="text" name="debet[]"></td><td><input type="text" name="kredit[]"></td><td><button class="hapusBaris">Hapus Baris</button></td>
+						<td><select name="akun_id[]" class="akun-select" style="width: 300px;"></select></td><td><input type="text" name="debet[]"></td><td><input type="text" name="kredit[]"></td><td><button class="hapus-detail">Hapus Baris</button></td>
 					</tr>
 					</tbody>
 					<tfoot>
 					<tr>
-						<td colspan="4"><input type="button" value="Tambah Detail" id="add-detail"></td>
+						<td colspan="4"><input type="button" value="Tambah Detail" id="tambah-detail"></td>
 					</tr>
 					</tfoot>
 				</table>
@@ -43,19 +43,41 @@
 <script type="text/javascript">
 $(function() {
 
-	$('#add-detail').on('click', addDetail);
-	$('.hapusBaris').on('click', hapusBaris);
+	'use strict';
 
-	function addDetail() {
+	var options = {
+		ajax : {
+			url            : 'http://localhost:8080/accounting/index.php/t101_jurnal/ambil_data_akun',
+			cache          : true,
+			dataType       : 'json',
+			delay          : 250,
+			processResults : function (data) {
+				$.each(data.nama_akun, function(i, o) {
+					data.nama_akun[i].text = o.nama;
+					//alert(o.nama);
+				});
+				return {
+					results : data.nama_akun
+				};
+			}
+		}
+	};
+
+	$('#tambah-detail').on('click', tambahDetail);
+	$('.hapus-detail').on('click', hapusDetail);
+	$('.akun-select').select2(options);
+
+	function tambahDetail() {
 		var html = '' +
 		'<tr>' +
-			'<td><select name="akun_id[]"></select></td><td><input type="text" name="debet[]"></td><td><input type="text" name="kredit[]"></td><td><button class="hapusBaris">Hapus Baris</button></td>' +
+			'<td><select name="akun_id[]" class="akun-select" style="width: 300px;"></select></td><td><input type="text" name="debet[]"></td><td><input type="text" name="kredit[]"></td><td><button class="hapus-detail">Hapus Baris</button></td>' +
 		'</tr>';
 		$('#table-detail tbody').append(html);
-		$('.hapusBaris').on('click', hapusBaris);
+		$('.hapus-detail').on('click', hapusDetail);
+		$('.akun-select').select2(options);
 	}
 
-	function hapusBaris() {
+	function hapusDetail() {
 		var row = $(this).parents('tr').first(); //alert(row.length);
 		if (row.length > 0) $(row[0]).remove();
 	}
