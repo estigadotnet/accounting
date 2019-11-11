@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 02, 2019 at 08:50 AM
+-- Generation Time: Nov 11, 2019 at 07:01 PM
 -- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -399,7 +399,247 @@ INSERT INTO `t004_akun` (`id`, `kode`, `nama`, `subgrup_id`, `user_id`, `matauan
 (104, '610-80', 'Beban Perlengkapan Kantor', 18, NULL, 61),
 (107, '110-10', 'Kas Kecil', 1, NULL, 61),
 (108, '123458', '1234567', 25, NULL, 61),
-(109, 'x', 'x', 25, NULL, 40);
+(109, 'xy', 'xyz', 25, NULL, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t005_periode`
+--
+
+CREATE TABLE `t005_periode` (
+  `id` int(11) NOT NULL,
+  `start` datetime DEFAULT NULL,
+  `end` datetime DEFAULT NULL,
+  `isaktif` bit(1) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t005_periode`
+--
+
+INSERT INTO `t005_periode` (`id`, `start`, `end`, `isaktif`, `user_id`) VALUES
+(1, '2011-10-01 00:00:00', '2011-10-31 00:00:00', b'1', NULL),
+(2, '2019-01-01 00:00:00', '2019-12-31 00:00:00', b'0', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t006_saldoawal`
+--
+
+CREATE TABLE `t006_saldoawal` (
+  `id` int(11) NOT NULL,
+  `periode_id` int(11) DEFAULT NULL,
+  `akun_id` int(11) DEFAULT NULL,
+  `debet` float(14,2) DEFAULT 0.00,
+  `kredit` float(14,2) DEFAULT 0.00,
+  `user_id` int(11) DEFAULT NULL,
+  `saldo` float(14,2) DEFAULT 0.00
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t006_saldoawal`
+--
+
+INSERT INTO `t006_saldoawal` (`id`, `periode_id`, `akun_id`, `debet`, `kredit`, `user_id`, `saldo`) VALUES
+(7, 1, 2, NULL, NULL, NULL, 2600000.00),
+(8, 1, 4, NULL, NULL, NULL, 26725000.00),
+(9, 1, 8, NULL, NULL, NULL, 17123000.00),
+(10, 1, 12, NULL, NULL, NULL, 24186500.00),
+(11, 1, 23, NULL, NULL, NULL, 7650000.00),
+(12, 1, 17, NULL, NULL, NULL, 2400000.00),
+(13, 1, 21, NULL, NULL, NULL, 150000000.00),
+(14, 1, 22, NULL, NULL, NULL, -4800000.00),
+(15, 1, 27, NULL, NULL, NULL, 85000000.00),
+(16, 1, 28, NULL, NULL, NULL, -4375000.00),
+(17, 1, 98, NULL, NULL, NULL, 900000.00),
+(18, 1, 24, NULL, NULL, NULL, -1771000.00),
+(19, 1, 38, NULL, NULL, NULL, 14625000.00),
+(20, 1, 52, NULL, NULL, NULL, 47700000.00),
+(21, 1, 54, NULL, NULL, NULL, 243313504.00),
+(22, 1, 3, 4.00, 5.00, NULL, 6.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t007_tipejurnal`
+--
+
+CREATE TABLE `t007_tipejurnal` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t007_tipejurnal`
+--
+
+INSERT INTO `t007_tipejurnal` (`id`, `kode`, `nama`) VALUES
+(1, 'JU', 'Jurnal Umum'),
+(2, 'KM', 'Kas Masuk'),
+(3, 'KK', 'Kas Keluar'),
+(4, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t101_jurnal`
+--
+
+CREATE TABLE `t101_jurnal` (
+  `id` int(11) NOT NULL,
+  `tipejurnal_id` int(11) DEFAULT NULL,
+  `period_id` int(11) DEFAULT NULL,
+  `createon` datetime DEFAULT NULL,
+  `keterangan` varchar(50) DEFAULT NULL,
+  `person_id` int(11) DEFAULT NULL,
+  `nomer` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t101_jurnal`
+--
+
+INSERT INTO `t101_jurnal` (`id`, `tipejurnal_id`, `period_id`, `createon`, `keterangan`, `person_id`, `nomer`) VALUES
+(1, 1, 1, '2011-10-03 14:04:52', 'Penjualan', NULL, NULL),
+(2, 1, 1, '2011-10-05 14:36:55', 'Pembayaran hutang bank', NULL, NULL),
+(3, 1, 1, '2011-10-05 14:41:57', 'Pembelian kertas HVS 1 Rim', NULL, NULL),
+(4, 1, 1, '2011-10-07 14:42:28', 'Pembelian', NULL, NULL),
+(5, 1, 1, '2011-10-08 14:53:03', 'Pendapatan jasa service', NULL, NULL),
+(6, 1, 1, '2011-10-13 15:01:01', 'Penjualan', NULL, NULL),
+(7, 1, 1, '2011-10-15 15:17:20', 'Pembayaran listrik,air dan telp', NULL, NULL),
+(8, 1, 1, '2011-10-15 15:18:33', 'Retur penjualan', NULL, NULL),
+(9, 1, 1, '2011-10-19 15:26:48', 'Pembelian', NULL, NULL),
+(10, 1, 1, '2011-10-19 15:28:58', 'Service AC', NULL, NULL),
+(11, 1, 1, '2011-10-20 15:34:26', 'Penjualan tunai', NULL, NULL),
+(12, 1, 1, '2011-10-22 15:41:45', 'Retur pembelian', NULL, NULL),
+(13, 1, 1, '2011-10-27 16:10:26', 'Pendapatan jasa service', NULL, NULL),
+(14, 1, 1, '2011-10-29 16:42:09', 'Pembayaran hutang dagang', NULL, NULL),
+(15, 1, 1, '2011-10-30 16:43:21', 'Setoran ke Bank', NULL, NULL),
+(16, 1, 1, '2011-10-30 16:44:22', 'Penerimaan piutang', NULL, NULL),
+(17, 1, 1, '2011-10-30 16:45:14', 'Pendapatan bunga', NULL, NULL),
+(18, 1, 1, '2011-10-30 16:51:42', 'Pembayaran hutang dagang', NULL, NULL),
+(19, 1, 1, '2011-10-30 16:52:58', 'Beban adm bank', NULL, NULL),
+(20, 1, 1, '2011-10-31 16:57:21', 'Iuran kebersihan dan keamanan', NULL, NULL),
+(21, 1, 1, '2011-10-31 17:00:50', 'Pembayaran gaji pegawai', NULL, NULL),
+(22, 1, 1, '2011-10-31 17:02:01', 'Perlengkapan kantor', NULL, NULL),
+(23, 1, 1, '2011-10-31 17:05:57', 'Persediaan barang dagang', NULL, NULL),
+(24, 1, 1, '2011-10-31 17:09:22', 'Asuransi yang telah menjadi beban', NULL, NULL),
+(25, 1, 1, '2011-10-31 17:11:32', 'Penyusutan gedung', NULL, NULL),
+(26, 1, 1, '2011-10-31 17:16:10', 'Penyusutan kendaraan', NULL, NULL),
+(27, 1, 1, '2011-10-31 17:18:42', 'Penyusutan peralatan', NULL, NULL),
+(28, 1, 1, '2019-11-11 18:21:07', 'x', NULL, NULL),
+(29, 1, 1, '2019-11-11 18:26:56', 'y', NULL, NULL),
+(30, 1, 1, '2019-11-11 18:28:25', 'z', NULL, NULL),
+(31, 1, 1, '2019-11-11 18:33:45', 'b', NULL, NULL),
+(32, 1, 1, '2019-11-11 18:36:20', 'c', NULL, NULL),
+(33, 1, 1, '2019-11-11 18:37:01', 'd', NULL, NULL),
+(34, 1, 1, '2019-11-11 18:41:49', 'd', NULL, NULL),
+(35, 1, 1, '2019-11-11 18:42:09', 'd', NULL, NULL),
+(36, 1, 1, '2019-11-11 18:49:43', 'd', NULL, NULL),
+(37, 1, 1, '2019-11-11 18:51:02', 'd', NULL, NULL),
+(38, 1, 1, '2019-11-11 18:52:12', 'd', NULL, NULL),
+(39, 1, 1, '2019-11-11 18:53:43', '', NULL, NULL),
+(40, 1, 1, '2019-11-11 18:57:30', 'gaji karyawan', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t102_jurnald`
+--
+
+CREATE TABLE `t102_jurnald` (
+  `id` int(11) NOT NULL,
+  `jurnal_id` int(11) DEFAULT NULL,
+  `akun_id` int(11) DEFAULT NULL,
+  `debet` float(15,3) DEFAULT NULL,
+  `kredit` float(15,3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t102_jurnald`
+--
+
+INSERT INTO `t102_jurnald` (`id`, `jurnal_id`, `akun_id`, `debet`, `kredit`) VALUES
+(1, 1, 8, 8966100.000, NULL),
+(2, 1, 59, NULL, 8580000.000),
+(3, 1, 63, 429000.000, NULL),
+(4, 1, 88, NULL, 815100.000),
+(5, 2, 52, 460000.000, NULL),
+(6, 2, 2, NULL, 460000.000),
+(7, 3, 98, 40000.000, NULL),
+(8, 3, 2, NULL, 40000.000),
+(9, 4, 90, 3500000.000, NULL),
+(10, 4, 70, NULL, 350000.000),
+(11, 4, 89, 315000.000, NULL),
+(12, 4, 38, NULL, 3465000.000),
+(13, 5, 2, 550000.000, NULL),
+(14, 5, 91, NULL, 550000.000),
+(15, 6, 8, 13215488.000, NULL),
+(16, 6, 59, NULL, 12646400.000),
+(17, 6, 63, 632320.000, NULL),
+(18, 6, 88, NULL, 1201408.000),
+(19, 7, 76, 410000.000, NULL),
+(20, 7, 2, NULL, 410000.000),
+(21, 8, 92, 520000.000, NULL),
+(22, 8, 8, NULL, 543400.000),
+(23, 8, 88, 49400.000, NULL),
+(24, 8, 63, NULL, 26000.000),
+(25, 9, 90, 2280000.000, NULL),
+(26, 9, 70, NULL, 228000.000),
+(27, 9, 89, 205200.000, NULL),
+(28, 9, 38, NULL, 2257200.000),
+(29, 10, 93, 25000.000, NULL),
+(30, 10, 2, NULL, 25000.000),
+(31, 11, 2, 2860000.000, NULL),
+(32, 11, 59, NULL, 2600000.000),
+(33, 11, 88, NULL, 260000.000),
+(34, 12, 38, 118800.000, NULL),
+(35, 12, 94, NULL, 120000.000),
+(36, 12, 70, 12000.000, NULL),
+(37, 12, 89, NULL, 10800.000),
+(38, 13, 2, 625000.000, NULL),
+(39, 13, 91, NULL, 625000.000),
+(40, 14, 38, 1000000.000, NULL),
+(41, 14, 4, NULL, 1000000.000),
+(42, 15, 4, 1500000.000, NULL),
+(43, 15, 2, NULL, 1500000.000),
+(44, 16, 4, 3000000.000, NULL),
+(45, 16, 8, NULL, 3000000.000),
+(46, 17, 4, 72900.000, NULL),
+(47, 17, 95, NULL, 72900.000),
+(48, 18, 38, 2000000.000, NULL),
+(49, 18, 4, NULL, 2000000.000),
+(50, 19, 96, 15000.000, NULL),
+(51, 19, 4, NULL, 15000.000),
+(52, 20, 97, 75000.000, NULL),
+(53, 20, 2, NULL, 75000.000),
+(54, 21, 75, 2500000.000, NULL),
+(55, 21, 4, NULL, 2500000.000),
+(56, 22, 104, 140000.000, NULL),
+(57, 22, 98, NULL, 140000.000),
+(58, 23, 99, 17362000.000, NULL),
+(59, 23, 12, NULL, 24186500.000),
+(60, 23, 12, 11918500.000, NULL),
+(61, 23, 90, NULL, 5780000.000),
+(62, 23, 70, 566000.000, NULL),
+(63, 23, 94, 120000.000, NULL),
+(64, 24, 100, 250000.000, NULL),
+(65, 24, 17, NULL, 250000.000),
+(66, 25, 101, 600000.000, NULL),
+(67, 25, 22, NULL, 600000.000),
+(68, 26, 103, 625000.000, NULL),
+(69, 26, 28, NULL, 625000.000),
+(70, 27, 102, 253000.000, NULL),
+(71, 27, 24, NULL, 253000.000),
+(72, 38, 107, 444.000, 0.000),
+(73, 38, 2, 0.000, 444.000),
+(74, 39, NULL, 0.000, 0.000),
+(75, 40, 66, 10000000.000, 0.000),
+(76, 40, 4, 0.000, 10000000.000);
 
 --
 -- Indexes for dumped tables
@@ -433,6 +673,42 @@ ALTER TABLE `t004_akun`
   ADD KEY `fk_SubgrupAkun` (`subgrup_id`);
 
 --
+-- Indexes for table `t005_periode`
+--
+ALTER TABLE `t005_periode`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t006_saldoawal`
+--
+ALTER TABLE `t006_saldoawal`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_PeriodeSaldoawal` (`periode_id`),
+  ADD KEY `fk_AkunSaldoawal` (`akun_id`);
+
+--
+-- Indexes for table `t007_tipejurnal`
+--
+ALTER TABLE `t007_tipejurnal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t101_jurnal`
+--
+ALTER TABLE `t101_jurnal`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_PeriodeJurnal` (`period_id`),
+  ADD KEY `fk_TipejurnalJurnal` (`tipejurnal_id`);
+
+--
+-- Indexes for table `t102_jurnald`
+--
+ALTER TABLE `t102_jurnald`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_JurnalJurnald` (`jurnal_id`),
+  ADD KEY `fk_AkunJurnald` (`akun_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -459,6 +735,36 @@ ALTER TABLE `t003_matauang`
 --
 ALTER TABLE `t004_akun`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+
+--
+-- AUTO_INCREMENT for table `t005_periode`
+--
+ALTER TABLE `t005_periode`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `t006_saldoawal`
+--
+ALTER TABLE `t006_saldoawal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `t007_tipejurnal`
+--
+ALTER TABLE `t007_tipejurnal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `t101_jurnal`
+--
+ALTER TABLE `t101_jurnal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `t102_jurnald`
+--
+ALTER TABLE `t102_jurnald`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
