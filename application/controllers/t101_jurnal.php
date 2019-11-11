@@ -25,6 +25,10 @@ class t101_jurnal extends CI_Controller {
 	}
 
 	public function simpan() {
+		$detail = [];
+		foreach ($this->input->post('akun_id', TRUE) as $key => $value) $detail[$key]['akun_id'] = $value;
+		foreach ($this->input->post('debet', TRUE) as $key => $value) $detail[$key]['debet'] = $value;
+		foreach ($this->input->post('kredit', TRUE) as $key => $value) $detail[$key]['kredit'] = $value;
 		$data = array(
 			'tipejurnal_id' => $this->input->post('tipejurnal_id'),
 			'period_id' => $this->session->userdata('period_id'),
@@ -33,8 +37,7 @@ class t101_jurnal extends CI_Controller {
 			'person_id' => null,
 			'nomer' => null
 		);
-		foreach ($this->input->post('title_id', TRUE) as $key => $value) $this->model->address[$key]['title_id'] = $value;
-		$this->t101_jurnalm->simpan($data);
+		$this->t101_jurnalm->simpan($data, $detail);
 		redirect(site_url('t101_jurnal'));
 	}
 
