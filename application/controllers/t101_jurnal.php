@@ -33,6 +33,7 @@ class t101_jurnal extends CI_Controller {
 			'person_id' => null,
 			'nomer' => null
 		);
+		foreach ($this->input->post('title_id', TRUE) as $key => $value) $this->model->address[$key]['title_id'] = $value;
 		$this->t101_jurnalm->simpan($data);
 		redirect(site_url('t101_jurnal'));
 	}
