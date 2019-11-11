@@ -26,11 +26,15 @@ class t101_jurnal extends CI_Controller {
 
 	public function simpan() {
 		$data = array(
-			'kode' => $this->input->post('kode'),
-			'nama' => $this->input->post('nama')
+			'tipejurnal_id' => $this->input->post('tipejurnal_id'),
+			'period_id' => $this->session->userdata('period_id'),
+			'createon' => date('Y-m-d H:i:s'),
+			'keterangan' => $this->input->post('keterangan'),
+			'person_id' => null,
+			'nomer' => null
 		);
-		$this->t007_tipejurnalm->simpan($data);
-		redirect(site_url('t007_tipejurnal'));
+		$this->t101_jurnalm->simpan($data);
+		redirect(site_url('t101_jurnal'));
 	}
 
 	public function edit($id, $hapus = null) {

@@ -1,6 +1,6 @@
 <h3>JURNAL - TAMBAH DATA</h3>
-<!-- <form action="<?php echo site_url('t101_jurnal/simpan'); ?>" method="post"> -->
-	<form action="" method="post"></form>
+<form action="<?php echo site_url('t101_jurnal/simpan'); ?>" method="post">
+	<!-- <form action="" method="post"></form> -->
 	<input type="hidden" name="period_id" value="<?php echo $this->session->userdata('period_id'); ?>">
 	<table>
 		<tr>
