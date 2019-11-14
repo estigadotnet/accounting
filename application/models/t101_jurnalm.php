@@ -16,8 +16,6 @@ class t101_jurnalm extends CI_Model {
 		$id = $this->db->insert_id();
 		foreach ($detail as $key => $value) $detail[$key]['jurnal_id'] = $id;
 		$this->db->insert_batch($this->_table_d, $detail);
-		// var_dump($detail); exit;
-		// var_dump($data); exit;
 	}
 
 	public function ambil_data_by_id($id) {
